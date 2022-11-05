@@ -2,32 +2,22 @@
 
 #include "hex.h"
 
- Hex::Hex() {
- }
+ Hex::Hex(){}
 
  Hex::Hex(int newValue) {
       value = newValue;
  }
 
- Hex Hex::operator+(const Hex& rhs){                          //Overloading Operator for adding "hex" objects
-    Hex sum;
-    sum.value = this->value + rhs.value;
-    return sum;
+ uint32_t Hex::getValue(){
+  return value;
  }
 
-  bool Hex::operator<(const Hex& rhs){                         //Overloading Operator for checking if "hex" objects are less than another value
-    if (value < rhs.value) {
-      return true;
-    }
-      return false;
- }
-
-std::istream& operator>>(std::istream& input, Hex &hex){      //Overloading Operator for reading "hex" objects
+ std::istream& operator>>(std::istream& input, Hex &hex){      
    input >> hex.value;
    return input;
  }
 
-std::ostream& operator<<(std::ostream& output, Hex &hex){     //Overlodaing operator for displaying "hex" objects
+std::ostream& operator<<(std::ostream& output, Hex &hex){     
    output << hex.value;
    return output;
  }

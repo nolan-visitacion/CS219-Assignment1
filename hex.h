@@ -10,15 +10,13 @@
 class Hex {
         uint32_t value;
     public:
-        Hex();                                                                  //Hex Constructor
-        Hex(int);                                                               //Hex Parameterized Constructor
-        ~Hex(){};                                                               //Hex Destructor
+        Hex();                                                                  
+        Hex(int);                                                               
+        ~Hex(){};                                                               
 
-        Hex operator + (const Hex& rhs);                                        //Addition Operator 
-        bool operator < (const Hex& rhs);                                       //Less Than Operator
-        friend std::istream& operator>>(std::istream& input, Hex& hex);         //Reading Operator
-        friend std::ostream& operator<<(std::ostream& output, Hex& hex);        //Displaying Operator
+        uint32_t getValue();
+
+        friend std::istream& operator>>(std::istream& input, Hex& hex);         
+        friend std::ostream& operator<<(std::ostream& output, Hex& hex);
 };  
-
-
 #endif //HEX_H

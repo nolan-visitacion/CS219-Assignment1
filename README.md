@@ -1,7 +1,14 @@
 # CS219-Assignment1
 
-This executable opens and reads a .txt file that, when given an operation and two values in hex form, completes the operation and displays the value in hex form. If the sum is smaller than either addend, a message will be displayed indicating that an overflow has occurred. 
+What This Program Does:
 
-Each individual line is read and the operation and two hex values are stored as "operation" and "hex, hex2" of the "Hex class" Adding and displaying all occur before the next line is read. This process occurs until "eof" is reached.
+    This executable opens and reads a .txt file that, when given an operation and two values in hex form, completes the operation and displays the resulting number in hex form.  
 
-Other than the .txt file, there is no input on the users part. 
+How This Program Works:
+    Each individual line is read and the operation is stored in string "operation". Because the "NOT" operation only excepts operand, an if statement is used to read either two operands, saved as "operand1" and "operand2" or just one. "operand1". 
+
+    After the line has been read from the file, another if else statement checks to see if the operation is an ASR, LSR, or LSL and if they are, displays the operation and operand 2 without the prefix "0x" the shift is meant to be a regular integer value. In all other cases, the operands have the begin with "0x" to indicate they are hex values.
+
+    Once the line has been copied from the file and printed, the "performOperation" function takes the operation, operand1, and operand2 and, using many if statements to check the operation, performs said operation using functions from the processor class. The result is printed and the process repeats until file.peek() returns the EOF delimiter.
+
+    The processor functions are able to access "Hex" object attributes through the use of the .getValue() functions which returns the value of the attribute.
