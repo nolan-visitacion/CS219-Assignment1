@@ -14,8 +14,8 @@ void performOperation(std::string, Hex, Hex);
 int main () {
 
     Hex operand1, operand2;
-    std::string operation;
-    std::ifstream file("Programming-Project-2.txt");
+    std::string operation, registerA, registerB, registerC;
+    std::ifstream file("Programming-Project-3.txt");
     std::cout << std::uppercase;
 
     if(!file.is_open()){                                                                                
@@ -25,22 +25,25 @@ int main () {
     else {
         while (file.peek() != EOF) {                                                                               
             file >> operation;
-            if (operation == "NOT"){
-                file >> std::hex >> operand1;
+            if (operation == "MOV"){
+                file >> registerA >> std::hex >> operand1;
                 operand2 = 0;
             }
+            else if (operation == "ASR" || operation == "LSR" || operation == "LSL"){
+                file >> registerA >>  registerB >> operand1;
+            }
             else {
-                file >> std::hex >> operand1 >>  std::hex >> operand2;
+                file >> registerA >> registerB >> registerC;
             }
             
             std::cout << "~~~~~~~~~~~~~~~~~" << std::endl;
             if (operation == "ASR" || operation == "LSR" || operation == "LSL"){
-                std::cout << operation << " 0x" << std::hex << operand1 << " " << operand2 << std::endl;
+                std::cout << operation << " 0x" << std::hex << operand1 << " " << operand1 << std::endl;
             }
             else {
-                std::cout << operation << " 0x" << std::hex << operand1 << " 0x" << operand2 << std::endl;
+                std::cout << operation << " 0x" << std::hex << operand1 << " " << registerA << std::endl;
             }
-            performOperation(operation, operand1, operand2);
+            //performOperation(operation, operand1, operand2);
         }
     }
     file.close();                                                                               
